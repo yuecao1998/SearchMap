@@ -39,4 +39,23 @@ A sample build file for this project
 	</delete>
 </target>
 
+<target name="dist" description="generate HTML documentation" depends="compile">
+	<jar destfile="${dist.dir}/SearchMap.jar" basedir="${build.dir}" excludes="**/Test*.class"/>
+</target>
+
+<target name="test" description="run JUnit tests" depends="compile">
+	<junit printsummary="yes">
+		<classpath>
+	        <pathelement location="${build.dir}"/>
+	        <pathelement path="${build.dir}"/>
+	    </classpath>
+		
+		<batchtest>
+			<fileset dir="${build.dir}" includes="**/Test*.class" />
+		</batchtest>
+	</junit>
+</target>
+
+
+
 </project>

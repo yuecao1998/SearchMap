@@ -22,6 +22,12 @@ import javax.sound.sampled.Line;
 
 public class SearchMap {
 	
+	/**
+	 * This function helps get the string with comma between each city, which makes it
+	 * easier to print to the output file
+	 * @param route the string that includes all the cities on the route
+	 * @return the string with comma between each city
+	 */
 	protected static String getRouteString(String route) {
 		
 		String temp = "";
@@ -33,6 +39,11 @@ public class SearchMap {
 	}
 	
 	
+	/**
+	 * Main function that handles command-line arguments and file read and write
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
 		String infile = args[0];
@@ -69,7 +80,8 @@ public class SearchMap {
 			pw.println("$" + cost);
 		}
 		
-		
+		pw.close();
+		reader.close();	
 	}
 
 }

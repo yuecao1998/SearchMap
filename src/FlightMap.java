@@ -6,6 +6,11 @@ import java.util.Set;
 public class FlightMap {
 	protected Map<Character, HashMap<Character, Integer>> map;
 	
+	/**
+	 * This function reads all flight routes and their costs, and store the information into
+	 * the map variable
+	 * @param content A list of strings in "OriginCity DestCity FLightCost" format
+	 */
 	protected void getMap(List<String> content){
 		Map<Character, HashMap<Character, Integer>> map = new HashMap<>();
 		
@@ -26,6 +31,14 @@ public class FlightMap {
 		this.map = map;
 	}
 		
+	/**
+	 * This function gets all paths starting from the origin city
+	 * @param origin The original city
+	 * @param curr The current cities in the route. Contains only the origin city at the begining.
+	 * @param arrived The set of cities to which we already find a route. Contains only
+	 * the origin city at the beginning.
+	 * @param list Empty at the beginning. Will contain all routes from origin city after the function call.
+	 */
 	protected void getRoute(char origin, String curr, Set<Character> arrived, List<String> list){
 		if (this.map.get(origin) != null) {
 			for(Map.Entry<Character, Integer> entry: this.map.get(origin).entrySet()) {
@@ -43,6 +56,11 @@ public class FlightMap {
 		}
 	}
 		
+	/**
+	 * This function computes the flight cost given a certain route
+	 * @param route The string that contains all the city names on the route.
+	 * @return The flight cost of this route.
+	 */
 	protected int getCost(String route) {
 		int cost = 0;
 		for(int i=0; i < route.length() - 1; i++) {
